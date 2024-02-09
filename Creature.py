@@ -1,14 +1,15 @@
 from random import randint
 
 class Creature:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, generation, number):
+        self.generation = generation
+        self.number = number
         self.moves = []
         for i in range(100):
             self.moves.append(randint(1, 9))
 
-    def __str___(self):
-        return self.name
+    def __str__(self):
+        return "c" + str(self.number)
     
     def move(self):
         return self.moves[randint(0, 99)]
