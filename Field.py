@@ -4,6 +4,7 @@ class Field:
     
     def printField(self):
         for row in self.field:
-            print("\t".join((map(str, row))))
-
-
+            line = ""
+            for i in row:
+               line += "%4s" % str(i)  + " " 
+            print(line)
