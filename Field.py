@@ -13,9 +13,9 @@ class Field:
     def add_creature(self):
         x = randint(0, self.x-1)
         y = randint(0, self.y-1)
-        if self.field[x][y] == 0:
+        if self.field[y][x] == 0:
             newCreature = Creature(self.generation, self.creatureCounter, x, y) 
-            self.field[x][y] = newCreature
+            self.field[y][x] = newCreature
             self.population.append(newCreature)
             self.creatureCounter += 1
     
@@ -23,6 +23,7 @@ class Field:
         x_old = creature.x
         y_old = creature.y
         move = creature.move()
+        print(move)
         x_new = x_old
         y_new = y_old
         if move%3 == 0:
@@ -34,8 +35,8 @@ class Field:
         elif move//3 == 2:
             y_new += 1
         if x_new >= 0 and x_new < self.x and y_new >= 0 and y_new < self.y and self.field[x_new][y_new] == 0:
-            self.field[x_old][y_old] = 0
-            self.field[x_new][y_new] = creature
+            self.field[y_old][x_old] = 0
+            self.field[y_new][x_new] = creature
             creature.x = x_new
             creature.y = y_new
 

@@ -11,6 +11,5 @@ class Creature:
     def __str__(self):
         return "c" + str(self.number)
     
-    def move(self):
-        return self.genome[randint(0, 99)]
+    def move(self):        return self.genome[randint(0, 99)]
     
