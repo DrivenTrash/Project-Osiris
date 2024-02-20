@@ -11,10 +11,13 @@ class Field:
         self.population = []
 
     def add_creature(self):
-        newCreature = Creature(self.generation, self.creatureCounter)   
-        self.field[randint(0, self.x-1)][randint(0, self.y-1)] = newCreature
-        self.population.append(newCreature)
-        self.creatureCounter += 1
+        x = randint(0, self.x-1)
+        y = randint(0, self.y-1)
+        if self.field[x][y] == 0:
+            newCreature = Creature(self.generation, self.creatureCounter) 
+            self.field[x][y] = newCreature
+            self.population.append(newCreature)
+            self.creatureCounter += 1
     
     def display(self):
         for row in self.field:
