@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
-from application.field import Field
-from application.creature import Creature
+from field import Field
+from creature import Creature
 
 ##test the move_creature method
 class TestMoveCreature(unittest.TestCase):
