@@ -3,14 +3,15 @@ from creature import Creature
 
 class Field:
     def __init__(self, x, y):
-        self.x = x
+        self.x = x 
         self.y = y
         self.field = [[0 for i in range(x)] for j in range(y)]
         self.generation = 0
         self.creatureCounter = 0
-        self.population = []
+        self.population = [] ##stores pointers to  all creatures in the field
 
-    def add_creature(self):
+    ##spawns a new creature and adds it to the field
+    def add_creature(self): 
         x = randint(0, self.x-1)
         y = randint(0, self.y-1)
         if self.field[y][x] == 0:
@@ -19,11 +20,14 @@ class Field:
             self.population.append(newCreature)
             self.creatureCounter += 1
     
-    def move_creature(self, creature):
+    ##lets a creature perform a move
+    def move_creature(self, creature): 
+        ## first it gets the creatures current position
         x_old = creature.x
         y_old = creature.y
+        ## then it gets the creatures move
         move = creature.move()
-        print(move)
+        ## then it calculates the creatures new position
         x_new = x_old
         y_new = y_old
         if move%3 == 0:
@@ -34,13 +38,15 @@ class Field:
             y_new -= 1
         elif move//3 == 2:
             y_new += 1
+        ## last it checks if the new position is valid (not outside the grid and free) and if it is, it moves the creature
         if x_new >= 0 and x_new < self.x and y_new >= 0 and y_new < self.y and self.field[x_new][y_new] == 0:
             self.field[y_old][x_old] = 0
             self.field[y_new][x_new] = creature
             creature.x = x_new
             creature.y = y_new
 
-    def display(self):
+    ##prints the current state of the field
+    def display(self): 
         for row in self.field:
             line = ""
             for i in row:
