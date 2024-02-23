@@ -9,7 +9,8 @@ test.display()
 print("-------------------")
 print(test.population)
 for i in range(3):
+    print("Step: ", i)
     for c in test.population:
         test.move_creature(c)
-        test.display()
-        print("-------------------")   
+    test.display()
+    print("-------------------")   
