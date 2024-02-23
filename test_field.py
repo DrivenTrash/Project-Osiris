@@ -60,3 +60,40 @@ def test_move(mock_move):
         assert cTest.x == 3
         assert cTest.y == 3
         assert test.field[3][3] == cTest
+
+##test the add_creature method when the position is free
+def test_add_creature_free():
+    test = Field(5, 5)
+    test.add_creature(2, 2)
+    assert len(test.population) == 1
+    assert test.creatureCounter == 1
+    assert test.field[2][2].number == 0
+    assert test.field[2][2] == test.population[0]
+
+##test the add_creature method when the position is not free
+def test_add_creatzre_not_free():
+    test = Field(5, 5)
+    test.add_creature(2, 2)
+    test.add_creature(2, 2)
+    assert len(test.population) == 1
+    assert test.creatureCounter == 1
+    assert test.field[2][2].number == 0
+    assert test.field[2][2] == test.population[0]
+
+##test the add_creature method when the position is not given
+def test_add_creature_random():
+    test = Field(5, 5)
+    test.add_creature()
+    assert len(test.population) == 1
+    assert test.creatureCounter == 1
+    assert test.field[test.population[0].y][test.population[0].x] == test.population[0]
+
+##test adding multiple creatures
+def test_add_creature_multiple():
+    test = Field(5, 5)
+    for i in range(5):
+        test.add_creature()
+    assert len(test.population) == 5
+    assert test.creatureCounter == 5
+    for c in test.population:
+        assert test.field[c.y][c.x] == c
