@@ -59,5 +59,5 @@ class Field:
     ##decides which creatures survive
     def selection(self): 
         for c in self.population:
-            if c.y >= self.y//2:
+            if c.y <= self.y//2:
                 self.survivors.append(c)
