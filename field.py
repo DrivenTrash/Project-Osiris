@@ -9,6 +9,7 @@ class Field:
         self.generation = 0
         self.creatureCounter = 0
         self.population = [] ##stores pointers to  all creatures in the field
+        self.survivors = [] ##stores pointers to all creatures that survived the last round
 
     ##spawns a new creature and adds it to the field
     def add_creature(self, x=None, y=None): 
@@ -54,3 +55,9 @@ class Field:
             for i in row:
                line += "%4s" % str(i)  + " " 
             print(line)
+    
+    ##decides which creatures survive
+    def selection(self): 
+        for c in self.population:
+            if c.x >= self.x//2:
+                self.survivors.append(c)
