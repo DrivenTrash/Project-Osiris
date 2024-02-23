@@ -11,9 +11,11 @@ class Field:
         self.population = [] ##stores pointers to  all creatures in the field
 
     ##spawns a new creature and adds it to the field
-    def add_creature(self): 
-        x = randint(0, self.x-1)
-        y = randint(0, self.y-1)
+    def add_creature(self, x=None, y=None): 
+        if x is None:
+            x = randint(0, self.x-1)
+        if y is None:
+            y = randint(0, self.y-1)
         if self.field[y][x] == 0:
             newCreature = Creature(self.generation, self.creatureCounter, x, y) 
             self.field[y][x] = newCreature
