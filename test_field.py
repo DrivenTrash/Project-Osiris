@@ -97,3 +97,14 @@ def test_add_creature_multiple():
     assert test.creatureCounter == 5
     for c in test.population:
         assert test.field[c.y][c.x] == c
+
+##test the selection method
+def test_selection():
+    test = Field(5, 5)
+    for i in range(5):
+        test.add_creature(i, i)
+    test.selection()
+    assert len(test.survivors) == 3
+    for i in range(3):
+        assert test.survivors[i].x == i+2
+        assert test.survivors[i].y == i+2
